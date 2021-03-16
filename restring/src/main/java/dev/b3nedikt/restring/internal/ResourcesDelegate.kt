@@ -25,7 +25,8 @@ internal class ResourcesDelegate(
         val identifier = baseResources.getIdentifier(name, defType, defPackage)
 
         if (defType == "string" && identifier == 0) {
-            stringRepository.strings[Restring.locale]?.get(name) ?: return 0
+            val locale = Locale.ENGLISH
+            stringRepository.strings[locale]?.get(name) ?: return 0
             val stringId = UUID.randomUUID().hashCode()
 
             val managedString = Restring.managedStrings
